@@ -166,7 +166,7 @@ public class IntakeLifting extends Subsystem {
       if(dt > 0.5){
         if(motorOutputSum/iChecker > 0.55){
             deltaEncoder = encoderDistance - getDistance();
-          if(Math.abs(deltaEncoder) == 0 || Math.abs(getDistance()) > 30){
+          if(Math.abs(deltaEncoder) == 0){
             setDefaultCommand(new IntakeLift());
             check = true;
           }

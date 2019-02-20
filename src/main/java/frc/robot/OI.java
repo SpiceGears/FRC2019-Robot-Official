@@ -23,7 +23,6 @@ import frc.robot.Commands.Elevator.ElevatorSetIntake;
 import frc.robot.Commands.Elevator.ElevatorSetSecondStage;
 import frc.robot.Commands.Elevator.ElevatorSetThirdStage;
 import frc.robot.Commands.Elevator.ElevatorTrapez;
-import frc.robot.Commands.Intake.DropBall;
 import frc.robot.Commands.Intake.HatchShooter;
 import frc.robot.Commands.Intake.Intake0Deg;
 import frc.robot.Commands.Intake.Intake135UP;
@@ -73,11 +72,11 @@ public class OI {
 		// openIntake  = new JoystickButton(driver, DriverButtons.openIntake);
 		// openIntake.whenPressed(new HatchShooter());
 
-		openIntake  = new JoystickButton(driver, DriverButtons.openIntake);
-		openIntake.whenPressed(new IntakeOpen());
+		// openIntake  = new JoystickButton(driver, DriverButtons.openIntake);
+		// openIntake.whenPressed(new IntakeOpen());
 
-		openIntake  = new JoystickButton(driver, DriverButtons.closeIntake);
-		openIntake.whenPressed(new IntakeClose());
+		// openIntake  = new JoystickButton(driver, DriverButtons.closeIntake);
+		// openIntake.whenPressed(new IntakeClose());
 
 		// ballIntake = new JoystickButton(driver, DriverButtons.ballMotorStart);
 		// ballIntake.whileHeld(new IntakeBall());

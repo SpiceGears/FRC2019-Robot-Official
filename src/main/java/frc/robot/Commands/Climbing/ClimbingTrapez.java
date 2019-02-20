@@ -24,6 +24,8 @@ public class ClimbingTrapez extends Command {
   @Override
   protected void execute() {
     Robot.climbing.update();
+
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()

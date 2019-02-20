@@ -9,21 +9,18 @@ package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.PortMap;
-import frc.robot.Robot;
-import frc.robot.Commands.Intake.IntakeBall;
+import frc.robot.Commands.Intake.IntakeOpen;
 
 
 public class HatchIntake extends Subsystem {
   public final Compressor compressor = new Compressor();
   public final DoubleSolenoid intakeSolenoid = new DoubleSolenoid(PortMap.hatchSolenoidA, PortMap.hatchSolenoidB);
-  public final VictorSP ballMotor = new VictorSP(PortMap.ballMotor);
-  
+ 
   public void initDefaultCommand() {
-    setDefaultCommand(new IntakeBall());
+    //setDefaultCommand(new IntakeOpen());
   }
 
   public void hatchSolenoid(boolean open) {
@@ -37,19 +34,5 @@ public class HatchIntake extends Subsystem {
   public void hatchOFF() {
       intakeSolenoid.set(Value.kOff);
   }
-
-public void ballMotorSTART(){
-  if(Robot.oi.getDriverJoystick().getRawAxis(2) != 0){
-    ballMotor.set(Robot.oi.getDriverJoystick().getRawAxis(2)/2);
-  }else if(Robot.oi.getDriverJoystick().getRawAxis(3) != 0){
-    ballMotor.set(-Robot.oi.getDriverJoystick().getRawAxis(3)/2);
-  }else{
-    ballMotorSTOP();
-  }
-}
-
-public void ballMotorSTOP(){
-  ballMotor.set(0.0);
-}
 
 }

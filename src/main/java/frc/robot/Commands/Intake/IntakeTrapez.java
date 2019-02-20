@@ -13,6 +13,7 @@ import frc.robot.Robot;
 public class IntakeTrapez extends Command {
   public IntakeTrapez() {
     requires(Robot.intakeLifting);
+    requires(Robot.hatchIntake);
   }
 
   // Called just before this Command runs the first time

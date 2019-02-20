@@ -89,7 +89,7 @@ public class Constants {
 		public static double AllowedPivotTurnError = 4.0;
 
 	//Elevator
-		public static double elevatorThirdStage = 0.64;
+		public static double elevatorThirdStage = 0.62;
 		public static double elevatorSecondStage = 0.46;
 		public static double elevatorFirstStage = 0.18;
 		public static double elevatorIntake = 0.0;	//0.045;
@@ -117,7 +117,7 @@ public class Constants {
 		public static double IntakeProfile_kA = 0.0;
 		public static double IntakeProfile_kP = 0.7;
 		public static double IntakeProfile_theta_kP = 0.03;
-		public static double maxOutputIntake = 0.6;
+		public static double maxOutputIntake = 0.7;
 				
 		public static double IntakeProfile_MaxV = 2;
 		public static double IntakeProfile_MaxA = 0.7;
@@ -126,7 +126,7 @@ public class Constants {
 		public static double intake45_UP = 7;
 		public static double intake90_UP = 12.25;
 		public static double intake135_UP = 14;
-		public static double intake150_UP = 17;
+		public static double intake150_UP = 18.5;
 				
 		public static double intakePIDkP = 0.7;
 		public static double intakePIDkI = 0.07;

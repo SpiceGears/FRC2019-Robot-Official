@@ -9,6 +9,7 @@ package frc.robot.Commands.Intake;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -26,7 +27,21 @@ public class IntakeOpen extends Command {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.hatchIntake.hatchSolenoid(true);
+  }
+
+  @Override
+  protected void execute() {
+    SmartDashboard.putNumber("solenoid", 1);
+    if(Robot.oi.getDriverJoystick().getRawButton(5)){
+      Robot.hatchIntake.hatchSolenoid(true);
+      SmartDashboard.putNumber("solenoid", 2);
+      System.out.print("chatch open!!!!");
+    }else if(Robot.oi.getDriverJoystick().getRawButton(6)){
+      Robot.hatchIntake.hatchSolenoid(false);
+    System.out.print("chatch close!!!!");
+    }else{
+      Robot.hatchIntake.hatchOFF();
+    }
   }
 
   protected boolean isFinished() {

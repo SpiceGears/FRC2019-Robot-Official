@@ -28,7 +28,7 @@ public class ClimbingController implements DrivetrainController{
     private SpeedPID speedPID;
 
 	public ClimbingController(TrapezoidalMotionProfile profile) {
-		constants = Constants.getConstants();
+        constants = Constants.getConstants();
 		
 		SmartDashboard.putNumber("Debug_Climb", 4);
 		this.profile = profile;

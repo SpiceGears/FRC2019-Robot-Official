@@ -7,18 +7,13 @@
 
 package frc.robot;
 
-import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
-
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Subsystems.BallIntake;
 import frc.robot.Subsystems.CatchTarget;
 import frc.robot.Subsystems.Climbing;
 import frc.robot.Subsystems.DriveTrain;
@@ -37,6 +32,9 @@ public class Robot extends TimedRobot {
   public static IntakeLifting intakeLifting;
   public static Climbing climbing;
   public static CatchTarget catchTarget;
+  public static BallIntake ballIntake;
+
+  public int matchTime = 0;
 
   @Override
   public void robotInit() {
@@ -44,48 +42,26 @@ public class Robot extends TimedRobot {
     catchTarget = new CatchTarget();
     elevator = new Elevator();
     hatchIntake = new HatchIntake();
+    ballIntake = new BallIntake();
     driveTrain = new DriveTrain();
     intakeLifting = new IntakeLifting();
     climbing = new Climbing();
     oi = new OI();
+
 
     elevator.resetEncoder();
     intakeLifting.resetEncoder();
     climbing.resetEncoder();
     driveTrain.stopDrive();
 
-  //   UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-  //   camera.setResolution(288, 216);
-  //   camera.setFPS(20);
-
-  // //   new Thread(() -> {
-  // //     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-  // //     camera.setResolution(288, 216);
-  // //     camera.setFPS(20);
-      
-  // //     CvSink cvSink = CameraServer.getInstance().getVideo();
-  // //     CvSource outputStream = CameraServer.getInstance().putVideo("DriverCamera", 288, 216);
-      
-  // //     Mat source = new Mat();
-  // //     Mat output = new Mat();
-      
-  // //     while(!Thread.interrupted()) {
-  // //         cvSink.grabFrame(source);
-  // //         Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-  // //         outputStream.putFrame(output);
-  // //     }
-  // // }).start();
-
-
   }
 
   public void robotPeriodic(){
-    driveTrain.logs();
-    elevator.logs();
-    climbing.logs();
-    //hatchIntake.logs();
-    intakeLifting.logs();
-    catchTarget.logs();
+        Robot.driveTrain.logs();
+        Robot.elevator.logs();
+        Robot.climbing.logs();
+        Robot.intakeLifting.logs();
+        Robot.catchTarget.logs();
   }
 
   @Override
@@ -95,12 +71,25 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     driveTrain.stopDrive();
+
   }
 
   @Override
   public void autonomousPeriodic() {
     Robot.catchTarget.detectionMode();
     Scheduler.getInstance().run();
+
+    if(Robot.oi.getDriverJoystick().getRawButton(5)){
+      Robot.hatchIntake.hatchSolenoid(true);
+      SmartDashboard.putNumber("solenoid", 2);
+      System.out.print("chatch open!!!!");
+    }else if(Robot.oi.getDriverJoystick().getRawButton(6)){
+      Robot.hatchIntake.hatchSolenoid(false);
+    System.out.print("chatch close!!!!");
+    }else{
+      Robot.hatchIntake.hatchOFF();
+    }
+
 
   }
 
@@ -111,11 +100,25 @@ public class Robot extends TimedRobot {
     }
 
     driveTrain.stopDrive();
+
   }
 
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    if(Robot.oi.getDriverJoystick().getRawButton(5)){
+      Robot.hatchIntake.hatchSolenoid(true);
+      SmartDashboard.putNumber("solenoid", 2);
+      System.out.print("chatch open!!!!");
+    }else if(Robot.oi.getDriverJoystick().getRawButton(6)){
+      Robot.hatchIntake.hatchSolenoid(false);
+    System.out.print("chatch close!!!!");
+    }else{
+      Robot.hatchIntake.hatchOFF();
+    }
+    matchTime = (int) DriverStation.getInstance().getMatchNumber();
+    SmartDashboard.putNumber("timer", matchTime); //For Johnny <3
 
     Robot.catchTarget.detectionMode();
 

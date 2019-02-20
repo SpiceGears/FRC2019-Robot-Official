@@ -26,7 +26,12 @@ public class IntakeClose extends Command {
   // Called once when the command executes
   @Override
   protected void initialize() {
+  }
+
+  @Override
+  protected void execute() {
     Robot.hatchIntake.hatchSolenoid(false);
+    System.out.print("chatch close!!!!");
   }
 
   @Override

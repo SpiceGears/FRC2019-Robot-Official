@@ -12,6 +12,6 @@ package frc.robot;
  */
 public class SmartDashBoardInput {
     public void allLogs(){
-        Robot.elevator.logs();
+        
     }
 }

@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class IntakeBall extends Command {
   public IntakeBall() {
-    requires(Robot.hatchIntake);
+    requires(Robot.ballIntake);
   }
 
   // Called just before this Command runs the first time
@@ -23,7 +23,7 @@ public class IntakeBall extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hatchIntake.ballMotorSTART();
+    Robot.ballIntake.ballMotorSTART();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -35,7 +35,7 @@ public class IntakeBall extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatchIntake.ballMotorSTOP();
+    Robot.ballIntake.ballMotorSTOP();
   }
 
   // Called when another command which requires one or more of the same
