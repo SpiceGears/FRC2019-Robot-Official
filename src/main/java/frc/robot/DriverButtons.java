@@ -14,13 +14,13 @@ public class DriverButtons {
     
     //Operator
 
-    public static int elevatorIntake = 3;
+    public static int elevatorIntake = 1;
     public static int elevatorFirstStage = 2;
-    public static int elevatorSecondStage = 4;
-    public static int elevatorThirdStage = 1;
+    public static int elevatorSecondStage = 3;
+    public static int elevatorThirdStage = 4;
 
-    public static int setManualControl = 14;
-    public static int setTrapezControl = 16;
+    public static int setManualControl = 7;
+    public static int setTrapezControl = 8;
 
     public static int intake0DEG = 7;
     public static int intake45DEG = 5;

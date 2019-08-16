@@ -48,7 +48,7 @@ public class IntakeLifting extends Subsystem {
   private double deltaEncoder;
   private boolean check = false;
 
-  public enum Mode { //Sprawdzić odczyty encodera jak nam oddadzą robota 
+  public enum Mode {
 		DEG_0,
     DEG_45_UP,
     DEG_90_UP,
@@ -94,23 +94,23 @@ public class IntakeLifting extends Subsystem {
       //newSetPoint = setPoint;
     }
 
-    if(Robot.oi.getOperatorJoystick().getRawButton(7) && Robot.oi.getOperatorJoystick().getRawButton(5)){
+    if(Robot.oi.getOperatorJoystick().getRawAxis(2)!=0 && Robot.oi.getOperatorJoystick().getRawButton(5)){
       newSetPoint = (Constants.intakeZeroDeg+Constants.intake45_UP)/2;
     }else if(Robot.oi.getOperatorJoystick().getRawButton(5) && Robot.oi.getOperatorJoystick().getRawButton(6)){
       newSetPoint = (Constants.intake90_UP+Constants.intake45_UP)/2;
-    }else if(Robot.oi.getOperatorJoystick().getRawButton(6) && Robot.oi.getOperatorJoystick().getRawButton(8)){
+    }else if(Robot.oi.getOperatorJoystick().getRawButton(6) && Robot.oi.getOperatorJoystick().getRawAxis(3)!=0){
       newSetPoint = (Constants.intake90_UP+Constants.intake135_UP)/2;
-    }else if(Robot.oi.getOperatorJoystick().getRawButton(7)){
+    }else if(Robot.oi.getOperatorJoystick().getRawAxis(2)!=0){
       newSetPoint = Constants.intakeZeroDeg;
     }else if(Robot.oi.getOperatorJoystick().getRawButton(5)){
       newSetPoint = Constants.intake45_UP;
     }else if(Robot.oi.getOperatorJoystick().getRawButton(6)){
       newSetPoint = Constants.intake90_UP;
-    }else if(Robot.oi.getOperatorJoystick().getRawButton(8)){
+    }else if(Robot.oi.getOperatorJoystick().getRawAxis(3)!=0){
       newSetPoint = Constants.intake135_UP;
-    }else if(Robot.oi.getOperatorJoystick().getRawButton(15)){
-      newSetPoint = Constants.intake150_UP;
-    }
+    }//  else if(Robot.oi.getOperatorJoystick().getRawButton(15)){
+    //   newSetPoint = Constants.intake150_UP;
+    
     
     // switch(intakeMode) {
     // case DEG_0:

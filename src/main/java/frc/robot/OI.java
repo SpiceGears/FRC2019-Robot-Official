@@ -96,40 +96,20 @@ public class OI {
 		intakeStage = new JoystickButton(operator, DriverButtons.elevatorIntake);
 		intakeStage.whenPressed(new ElevatorSetIntake());
 
-		// intake45up = new JoystickButton(operator, DriverButtons.intake45DEG);
-		// intake45up.whenPressed(new Intake45UP());
+		// secondDriveTrain = new JoystickButton(operator, DriverButtons.secondDriveTrain);
+		// secondDriveTrain.whenPressed(new OpenClimbDriveTrain());
 
-		// intake90up = new JoystickButton(operator, DriverButtons.intake90DEG);
-		// intake90up.whenPressed(new Intake90UP());
+		// setManualClimb = new JoystickButton(operator, DriverButtons.setManualControlClimb);
+		// setManualClimb.whenPressed(new Climb());
 
-		// intake0 = new JoystickButton(operator, DriverButtons.intake0DEG);
-		// intake0.whenPressed(new Intake0Deg());
-
-		// intake135up = new JoystickButton(operator, DriverButtons.intake135DEG);
-		// intake135up.whenPressed(new Intake135UP());
-
-		// intake150up = new JoystickButton(operator, DriverButtons.intake150DEG);
-		// intake150up.whenPressed(new Intake150());
-
-		secondDriveTrain = new JoystickButton(operator, DriverButtons.secondDriveTrain);
-		secondDriveTrain.whenPressed(new OpenClimbDriveTrain());
-
-		setManualClimb = new JoystickButton(operator, DriverButtons.setManualControlClimb);
-		setManualClimb.whenPressed(new Climb());
-
-		setTrapezClimb = new JoystickButton(operator, DriverButtons.setTrapezControl2);
-		setTrapezClimb.whenPressed(new ClimbingTrapez());
-		
-		// runPathfinder = new JoystickButton(driver, DriverButtons.runPathfinder);
-		// runPathfinder.whenPressed(new DriveToTarget(SmartDashboard.getNumber("Get_X", 2), SmartDashboard.getNumber("Get_Y", 1), SmartDashboard.getNumber("Get_Angle", 30)));
-		//runPathfinder.whenPressed(new DriveToTarget(1.5, 0.5, 0));
+		// setTrapezClimb = new JoystickButton(operator, DriverButtons.setTrapezControl2);
+		// setTrapezClimb.whenPressed(new ClimbingTrapez());
 
 		setElevatorControl = new JoystickButton(operator, DriverButtons.setManualControl);
 		setElevatorControl.whenPressed(new ElevatorJoystick());
 
 		setElevatorTrapezoidal = new JoystickButton(operator, DriverButtons.setTrapezControl);
 		setElevatorTrapezoidal.whenPressed(new ElevatorTrapez());
-
     }
 
 	public Joystick getDriverJoystick() {
